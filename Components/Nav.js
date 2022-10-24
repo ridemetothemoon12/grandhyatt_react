@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useMediaQuery } from 'react-responsive';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components'
 
@@ -80,6 +81,20 @@ const HeaderTopDownMenuTextWrap = styled.div`
     }
     &:hover::after {
       width: 100%;
+    }
+  }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    ul {
+      display: flex;
+      width: 80%;
+      justify-content: space-around;
+      margin: 0 auto;
+    }
+    li {
+      font-size: 18px;
+      &::after {
+        top: 75%;
+      }
     }
   }
 `

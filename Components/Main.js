@@ -6,8 +6,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import styled from 'styled-components';
 import axios from 'axios';
-SwiperCore.use([Pagination, Autoplay]);
+import { useMediaQuery } from 'react-responsive';
 
+SwiperCore.use([Pagination, Autoplay]);
 
 const TitleStyle = {
   fontSize: "61px",
@@ -71,6 +72,9 @@ const ContentOne = styled.div`
   height: 680px;
   display: flex;
   justify-content: center;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    margin-top: 50px;
+  }
 `
 const ContentOneWrap = styled.div`
   flex-basis: 1200px;
@@ -79,6 +83,14 @@ const ContentOneWrap = styled.div`
   grid-template-columns: 40% 59%;
   grid-template-rows: repeat(2, 49%);
   gap: 1%;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    flex-basis: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+  }
 `
 const ContentOneItemLobby = styled.div`
   grid-column: 1/2;
@@ -90,6 +102,13 @@ const ContentOneItemLobby = styled.div`
 const ContentOneItemTextWrap = styled.div`
   grid-column: 2/3;
   grid-row: 1/2;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 const ContentOneItemOverview = styled.div`
   grid-column: 2/3;
@@ -97,6 +116,10 @@ const ContentOneItemOverview = styled.div`
   background: no-repeat url("../Image/outlook.jpg");
   background-size: cover;
   background-position: center;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 100%;
+    height: 400px;
+  }
 `
 const ContentTwo = styled.div`
   margin-top: 150px;
@@ -104,16 +127,31 @@ const ContentTwo = styled.div`
   height: 800px;
   display: flex;
   justify-content: center;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    margin-top: 50px;
+  }
 `
 const ContentTwoWrap = styled.div`
   flex-basis: 1200px;
   height: 100%;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    flex-basis: 800px;
+  }
 `
 const ContentTwoTextWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   height: 190px;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 `
 const ContentTwoTitleWrap = styled.div``
 const ContentTwoCurtainWrap = styled.div`
@@ -163,6 +201,11 @@ const ContentTwoCurtainDescItem = styled.div`
   &.active {
     display: flex;
   }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    h3 {
+      font-size: 22px !important;
+    }
+  }
 `
 const ContentTwoCurtainDescItemTitle = styled.div`
   width: 83%;
@@ -178,17 +221,32 @@ const ContentThree = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    margin-top: 100px;
+  }
 `
 const ContentThreeWrap = styled.div`
   flex-basis: 1200px;
   height: 100%;
-  `
+  @media (min-width: 641px) and (max-width: 1024px) {
+    flex-basis: 800px;
+  }
+`
 const ContentThreeTextWrap = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-  `
+    @media (min-width: 641px) and (max-width: 1024px) {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+`
 const ContentThreeItemWrap = styled.div`
   width: 100%;
   height: 700px;
@@ -235,10 +293,16 @@ const ContentFour = styled.div`
   display: flex;
   justify-content: center;
   overflow: hidden;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    margin-top: 100px;
+  }
 `
 const ContentFourWrap = styled.div`
   flex-basis: 1200px;
   height: 100%;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    flex-basis: 800px;
+  }
 `
 const ContentFourTextWrap = styled.div`
   width: 100%;
@@ -246,6 +310,15 @@ const ContentFourTextWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 `
 const ContentSwiperWrap = styled.div`
   width: 100%;
@@ -257,6 +330,9 @@ const ContentSwiperSlide = styled.div`
   display: table-cell;
   width: 60%;
   height: 100%;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 40%;
+  }
 `
 const ContentSwiperSlidesItem = styled.div`
   width: 100%;
@@ -300,6 +376,15 @@ const ContentSwiperTextWrap = styled.div`
     width: 70%;
     text-align: justify;
   }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 42%;
+    p {
+      width: 80%;
+    }
+    h1, h2, h3 {
+      margin-top: 8px;
+    }
+  }
 `
 const ContentSwiperTextWrapItem = styled.div`
   display: none;
@@ -309,6 +394,9 @@ const ContentSwiperTextWrapItem = styled.div`
   }
 `
 function Main() {
+  const IsDesktop = useMediaQuery({ query: "(min-width: 1025px"})
+  const IsTablet = useMediaQuery({ query: "(min-width: 641px) and (max-width: 1024px)" });
+  
   const [curtainIndex, setCurtainIndex] = useState([]);
   function setCurtainIndexSetter(index) {
     setCurtainIndex(index)
@@ -354,10 +442,12 @@ function Main() {
 
       <ContentOne>
         <ContentOneWrap>
-          <ContentOneItemLobby></ContentOneItemLobby>
+          { IsDesktop && <ContentOneItemLobby></ContentOneItemLobby> }
           <ContentOneItemTextWrap>
-            <p style={{fontSize: "61px", fontWeight: "bold"}}>하얏트 제주만의</p>
-            <p style={TitleStyle}>특별한 경험</p>
+            { IsDesktop && <p style={{fontSize: "61px", fontWeight: "bold"}}>하얏트 제주만의</p> }
+            { IsDesktop && <p style={TitleStyle}>특별한 경험</p>}
+            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold"}}>이국적인 제주도를</p> }
+            { IsTablet && <p style={{width: "fit-content", fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>그랜드 하얏트 호텔과 함께</p>}
             <p>제주도의 푸른 빛 바다, 수 많은 오름과 한라산의 아름다운 경관, 이국적인 야자수와 동양적인 동백꽃은 새로운 영감을 불어넣습니다 최고의 경험, 로맨틱한 휴일을 그랜드 하얏트에서 보내시길 권해드립니다.</p>
           </ContentOneItemTextWrap>
           <ContentOneItemOverview></ContentOneItemOverview>
@@ -368,8 +458,9 @@ function Main() {
         <ContentTwoWrap>
           <ContentTwoTextWrap>
             <ContentTwoTitleWrap>
-              <p style={{fontSize: "61px", fontWeight: "bold"}}>하얏트 제주</p>
-              <p style={TitleStyle}>편의 시설</p>
+              { IsDesktop && <p style={{fontSize: "61px", fontWeight: "bold"}}>하얏트 제주</p> }
+              { IsDesktop && <p style={TitleStyle}>편의 시설</p>}
+              { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>하얏트 제주 편의 시설</p> }
             </ContentTwoTitleWrap>
               <p style={{marginBottom: "15px", width: "60%"}}>제주 하얏트 호텔이 제공하는 세계적인 프리미엄 편의 시설과 함께 특별한 휴가를 보내실 수 있도록 최선을 다하고 있습니다.</p>
           </ContentTwoTextWrap>
@@ -393,8 +484,9 @@ function Main() {
       <ContentThree>
         <ContentThreeWrap>
           <ContentThreeTextWrap>
-          <p style={TitleStyle}>객실 안내</p>
-          <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>제주의 아름다운 경관을 하얏트만의 특별한 감성과 함께.</p>
+            { IsDesktop && <p style={TitleStyle}>객실 안내</p> }
+            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>객실 안내</p> }
+            <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>제주의 아름다운 경관을 하얏트만의 특별한 감성과 함께.</p>
           </ContentThreeTextWrap>
           <ContentThreeItemWrap>
             <ContentThreeItem></ContentThreeItem>
@@ -408,7 +500,8 @@ function Main() {
       <ContentFour>
         <ContentFourWrap>
           <ContentFourTextWrap>
-            <p style={TitleStyle}>파인 다이닝</p>
+            { IsDesktop && <p style={TitleStyle}>파인 다이닝</p> }
+            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>파인 다이닝</p> }
             <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>그랜드 하얏트에서 제공하는 특별한 만찬</p>
           </ContentFourTextWrap>
           <ContentSwiperWrap>
