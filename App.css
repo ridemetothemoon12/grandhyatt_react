@@ -1,40 +1,40 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 ul {
-    list-style: none;
+  list-style: none;
 }
 @font-face {
-    font-family: 'Score3';
-    src: url('/public/fonts/SCDream3.otf');
+  font-family: 'Score3';
+  src: url('/public/fonts/SCDream3.otf');
 }
 h3, p {
-    font-family: Score3;
+  font-family: Score3;
 }
 
 .swiper-pagination {
-    position: static !important;
-    width: 30px !important;
-    height: 700px !important;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  position: static !important;
+  width: 30px !important;
+  height: 700px !important;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .swiper-pagination.on {
-    left: 89% !important;
+  left: 89% !important;
 }
 .swiper-pagination-bullet {
-    transition: .3s !important;
-    opacity: 1 !important;
-    background-color: #999 !important;
-    width: 8px !important;
-    height: 45px !important;
-    margin: 0 10px !important;
-    border-radius: 0 !important;
-    margin-bottom: 10px !important;
+  transition: .3s !important;
+  opacity: 1 !important;
+  background-color: #999 !important;
+  width: 8px !important;
+  height: 45px !important;
+  margin: 0 10px !important;
+  border-radius: 0 !important;
+  margin-bottom: 10px !important;
 }
 .swiper-pagination-bullet-active {
-    background-color: #BD213E !important;
+  background-color: #BD213E !important;
 }

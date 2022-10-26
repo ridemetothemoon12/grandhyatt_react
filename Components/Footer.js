@@ -54,10 +54,10 @@ function Footer() {
                 <FooterWrap>
                     <FooterInfos>
                         <FooterInfosItem>
-                            <il>그랜드 하얏트 제주</il>
-                            <il>제주시 노연로 12. 제주. 대한민국. 63082</il>
-                            <il>전화: +82 64 907 1234 | 팩스: +82 64 907 1235 | jeju.grand@hyatt.com</il>
-                            <il>영상정보처리기기 운영관리방침</il>
+                            <li>그랜드 하얏트 제주</li>
+                            <li>제주시 노연로 12. 제주. 대한민국. 63082</li>
+                            <li>전화: +82 64 907 1234 | 팩스: +82 64 907 1235 | jeju.grand@hyatt.com</li>
+                            <li>영상정보처리기기 운영관리방침</li>
                         </FooterInfosItem>
                         <FooterInfosItem>
                             <li>사업자등록번호: 101-81-10173</li>

@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import styled from 'styled-components';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
 
 SwiperCore.use([Pagination, Autoplay]);
 
@@ -353,7 +354,10 @@ const ContentSwiperTextWrap = styled.div`
   &.on {
     width: 3%;
     h2, h3, p {
-      opacity: 0;
+      display: none;
+    }
+    h1 {
+      writing-mode: vertical-lr;
     }
   }
   h1 {
@@ -422,6 +426,11 @@ function Main() {
     setContentList(response.data.contentItem);
     setFineDineList(response.data.fineDine);
   }
+
+
+  // const PageLang = useSelector((state) => state.language);
+
+  // console.log(PageLang)
   useEffect(() => {
     fetchList();
   }, []);
@@ -529,7 +538,7 @@ function Main() {
               </Swiper>
             </ContentSwiperSlide>
             <ContentSwiperTextWrap className={(onFineToggle === true && 'on')}>
-              {
+              { 
                 fineDineList.map((e, index) => {
                   return <ContentSwiperTextWrapItem className={(sliderIndex === index) ? "active" : null} key={e.id}>
                     <h1>{e.title}</h1>

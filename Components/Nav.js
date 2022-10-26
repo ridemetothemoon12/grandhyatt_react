@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import { useMediaQuery } from 'react-responsive';
-import { Routes, Route } from 'react-router-dom';
+// import { connect, useDispatch, useSelector } from 'react-redux';
+// import { useMediaQuery } from 'react-responsive';
+// import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components'
+import { connect } from 'react-redux';
+// import { ChangeLanguage } from '../store';
+
 
 const Header = styled.div`
   width: 100%;
@@ -103,20 +107,40 @@ const HeaderReserveLang = styled.div`
   width: 150px;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
 `
+// const ChangeLanguage1 = useSelector((state) => state.languageData.data)
+//   console.log(ChangeLanguage1)
+// const dispatch = useDispatch();
+
+
 class HeaderConstructor extends React.Component {
   constructor(props) {
     super(props);
     this.clickHam = this.clickHam.bind(this);
     this.state = {
-      active: false
+      active: false,
+      language: false
       };
   }
-  clickHam = () => {
-      const currentState = this.state.active;
-      this.setState({active: !currentState})
+  clickHam() {
+    const currentState = this.state.active;
+    this.setState({active: !currentState})
     };
+  clickLang() {
+    const currentLanguage = this.state.language;
+    this.setState({language: !currentLanguage})
+    console.log('increase');
+  };
+
+
+
+
+
   render() {
+    // const { language } = this.props;
+
     return (
       <Header>
         <HeaderWrap>
@@ -127,8 +151,8 @@ class HeaderConstructor extends React.Component {
           </HeaderHamMenustyle>
           <HeaderLogo><img src='../Image/logo.png' alt='logo'/></HeaderLogo>
           <HeaderReserveLang>
-            <p>예약하기</p>
-            <p>한국어</p>
+            <p>{this.state.language ? "RESERVE" : "예약하기"}</p>
+            <p onClick={() => this.clickLang()}>{this.state.language ? "English" : "한국어"}</p>
           </HeaderReserveLang>
         </HeaderWrap>
         <HeaderTopDownMenu className={this.state.active ? 'on' : null}>
@@ -148,6 +172,8 @@ class HeaderConstructor extends React.Component {
 }
 
 function Nav() {
+  
+
   return (
     <>
       <HeaderConstructor></HeaderConstructor>
@@ -155,4 +181,12 @@ function Nav() {
   )
 }
 
-export default Nav
+
+let mapStateToProps = (state) => {
+  return {
+      value: state.counter.value
+  };
+} 
+
+
+export default connect(mapStateToProps)(Nav);
