@@ -1,0 +1,191 @@
+{
+    "contentCurtain" : [
+        {
+            "id" : 1,
+            "src" : "url('./Image/contentpool.jpg')",
+            "title" : "Rosebay Spa"
+        },
+        {
+            "id" : 2,
+            "src" : "url('./Image/contenthan.jpg')",
+            "title" : "HAN Collection"
+        },
+        {
+            "id" : 3,
+            "src" : "url('./Image/contentdeck.jpg')",
+            "title" : "Pool Deck"
+        },
+        {
+            "id" : 4,
+            "src" : "url('./Image/contentoutlook.jpg')",
+            "title" : "Dining in the Clouds"
+        },
+        {
+            "id" : 5,
+            "src" : "url('./Image/contentfit.jpg')",
+            "title" : "Fitness center"
+        }
+    ],
+    "contentItem" : [
+        {
+            "id" : 1,
+            "title" : "Rosebay Spa",
+            "subtitle" : "Premium Spa",
+            "itemdesc" : "A luxury spa that offers bespoke treatments, incorporating the latest international trends and cosmeceutical technologies from around the world."
+        },
+        {
+            "id" : 2,
+            "title" : "HAN Collection",
+            "subtitle" : "Korea Milano",
+            "itemdesc" : "Explore two floors of fashion retail, dedicated to supporting local Korean fashion designers, from international fame to up and coming talents in the local South Korean fashion industry. Explore South Korea’s glamourous K-Fashion trends by category – shoes, bags, etc."
+        },
+        {
+            "id" : 3,
+            "title" : "Pool Deck",
+            "subtitle" : "Jeju At a glance",
+            "itemdesc" : "The largest 4,290m² outdoor deck on Jeju Island at the podium block. The infinity pool with a backdrop of the sea and Halla Mountain will make for the perfect Instagram post. Lounge at the cabanas, hot tub or day beds. The children can play at kid’s pool. Cabana areas are subject to reservations and usage is chargeable."
+        },
+        {
+            "id" : 4,
+            "title" : "Dining in the Clouds",
+            "subtitle" : "Luxury Skyscraper",
+            "itemdesc" : "Wine and dine in the clouds looking out into the horizon. Featuring a multi-dining and entertainment destination to whet your appetite for the finer things in life. Move around Lounge 38, Pocha and Steak House for a multi-sensory dining experience throughout the day."
+        },
+        {
+            "id" : 5,
+            "title" : "Fitness center",
+            "subtitle" : "High quailty facility",
+            "itemdesc" : "Professional instructors who has been strictly nominated and trained with high systematic education on personal training session, We, provide best service with supreme facilities."
+        }
+    ],
+    "fineDine" : [
+        {
+            "id" : 1,
+            "title" : "99 Valley",
+            "titleDesc" : "99 Valley is the perfect dining choice for a fast, affordable and delicious meal – featuring the best of Asian comfort food from Greater China and Southeast Asia. (accessible by foreign passport holders only).",
+            "breakf" : "Monday - Sundayㅣ24시간",
+            "lunch" : "Monday - Sundayㅣ24시간",
+            "dinner" : "Monday - Sundayㅣ24시간",
+            "loc" : "2F"
+        },
+        {
+            "id" : 2,
+            "title" : "China House",
+            "titleDesc" : "Led by Master Chef Vincent, our team of world-class specialty chefs serves up dim sum, BBQ , Peking Duck and wok, showcasing the best of China’s cuisines specializing in Northern, Shanghainese, Sichuan and Cantonese dishes. Experience the taste of China with the best of Chinese delicacies. A must-try is the signature Peking duck, freshly roasted and then skillfully carved tableside.",
+            "breakf" : "-",
+            "lunch" : "Wednesday & Sundayㅣ11:30AM - 3:00PM",
+            "dinner" : "Monday - Sundayㅣ5:00PM - 10:00PM",
+            "loc" : "3F"
+        },
+        {
+            "id" : 3,
+            "title" : "Grand Kitchen",
+            "titleDesc" : "Enjoy a fun and vibrant ‘Las-Vegas’ style buffet in Jeju. Born and raised in Korea, Chef Min was the Chef de Cuisine hailing from the top restaurant in Macau. He brings with him a wealth of culinary experience and knowledge. Featuring seven show kitchens, enjoy premium beef and lamb cuts to premier seafood grilled a-la-minute. Buffet includes a selection of fresh seafood like prawns and mussels; a sushi and sashimi corner, as well as refreshing salads and appetizers. Indulge in assorted desserts and a kid's buffet in a new and modern space.",
+            "breakf" : "Monday - Sundayㅣ6:30AM - 11:00AM",
+            "lunch" : "Monday - Sundayㅣ12:00PM - 2:30PM",
+            "dinner" : "Monday - Sundayㅣ5:00PM - 10:00PM",
+            "loc" : "4F"
+        },
+        {
+            "id" : 4,
+            "title" : "Jeju Hot Pot",
+            "titleDesc" : "This authentic Chinese hot pot restaurant presents Jeju's freshest seafood, meat and seasonal ingredients. Choose your soup bases, from nourishing pork broths to Sichuan spicy soups, prepared by our soup master. Select from a wide variety of fresh seafood, meats and seasonal vegetables to complete your meal. Complement your meal with a wide range of sauces and condiments to complete your dining experience.",
+            "breakf" : "-",
+            "lunch" : "Saturday & Sundayㅣ11:30AM - 3:00PM",
+            "dinner" : "Monday - Sundayㅣ5:00PM - 10:00PM",
+            "loc" : "3F"
+        },
+        {
+            "id" : 5,
+            "title" : "Noknamu",
+            "titleDesc" : "The finest cuts of Jeju black pork and Korean Hanwoo beef are grilled to perfection at your table. Complete your Korean dining experience with local Jeju Hallasan soju and makgeoli. For breakfast and lunch, guests can also select from signature favourites like bibimbap, doenjang jjigae, sea urchin seaweed soup.",
+            "breakf" : "Monday - Sundayㅣ7:00AM - 11:00AM",
+            "lunch" : "Monday - Sundayㅣ11:30AM - 3:00PM",
+            "dinner" : "Monday - Sundayㅣ5:00PM - 10:00PM",
+            "loc" : "3F"
+        },
+        {
+            "id" : 6,
+            "title" : "Pocha",
+            "titleDesc" : "Witness amazing sunsets at Jeju’s highest point. Enjoy fried chicken with beer, Korean seafood pancakes with makgeolli and Korean skewers with soju while you immerse yourself in the best of oldies K-pop till late. This is the perfect place to experience modern Korean nightlife.",
+            "breakf" : "-",
+            "lunch" : "Monday - Sundayㅣ11:30AM - 3:00PM",
+            "dinner" : "Sunday - Thursdayㅣ4:00PM - 12:30AM & 금요일 - 토요일ㅣ4:00PM - 1:30AM",
+            "loc" : "3F"
+        },
+        {
+            "id" : 7,
+            "title" : "Steak House",
+            "titleDesc" : "Witness amazing sunsets at Jeju’s highest point. Enjoy fried chicken with beer, Korean seafood pancakes with makgeolli and Korean skewers with soju while you immerse yourself in the best of oldies K-pop till late. This is the perfect place to experience modern Korean nightlife.",
+            "breakf" : "-",
+            "lunch" : "Wednesday & Sundayㅣ11:30AM - 3:00PM",
+            "dinner" : "Wednesday & Sundayㅣ5:00PM - 10:00PM",
+            "loc" : "Tower 2ㅣ38F"
+        },
+        {
+            "id" : 8,
+            "title" : "Yumeyama",
+            "titleDesc" : "Led by Chef Kojima, enjoy Sushi, Izakaya and Teppanyaki – 3 dining concepts all under one roof. This allows you to order from any kitchen. Choose from freshest sashimi like yellowtail and uni, sushi, charcoal grilled skewers, tempura or lobster and beef teppan. Complement your meal with an extensive selection of premium Japanese sake and highball.",
+            "breakf" : "-",
+            "lunch" : "-",
+            "dinner" : "Thursday, Sunday - Mondayㅣ5:30PM - 12:30AM & Friday - Saturday | 5:30PM - 1:30AM",
+            "loc" : "4F"
+        }
+    ],
+    "footerTop" : [
+        {
+            "id" : 1,
+            "content" : "Grnad Hyatt Jeju"
+        },
+        {
+            "id" : 2,
+            "content" : "12 Noyeon-ro, Jeju-si, South Korea, 63082"
+        },
+        {
+            "id" : 3,
+            "content" : "Tel: +82 64 907 1234 | Fax: +82 64 907 1235 | jeju.grand@hyatt.com"
+        },
+        {
+            "id" : 4,
+            "content" : "CCTV Policies and Procedures"
+        },
+        {
+            "id" : 5,
+            "content" : "Business Registration #: 101-81-10173"
+        },
+        {
+            "id" : 6,
+            "content" : "Telecommunication services registration #: 제 2020-제주노형-0197 호"
+        },
+        {
+            "id" : 7,
+            "content" : "CEO: Ki Byung Kim, Hyun Baek, Han Jun Kim"
+        }
+    ],
+    "footerBottom" : [
+        {
+            "id" : 1,
+            "content" : "Privacy Policy"
+        },
+        {
+            "id" : 2,
+            "content" : "Terms & Conditions"
+        },
+        {
+            "id" : 3,
+            "content" : "Cookie Center"
+        },
+        {
+            "id" : 4,
+            "content" : "Security & Safety"
+        },
+        {
+            "id" : 5,
+            "content" : "Modern Slavery and Human Trafficking"
+        },
+        {
+            "id" : 6,
+            "content" : "Do Not Sell My Personal Information"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/grandhyatt_react/static/css/main.51f1edb8.css",
+    "main.js": "/grandhyatt_react/static/js/main.e263cd04.js",
+    "static/js/787.cbfb9860.chunk.js": "/grandhyatt_react/static/js/787.cbfb9860.chunk.js",
+    "static/media/SCDream3.otf": "/grandhyatt_react/static/media/SCDream3.1e55b77199a0afd0ed9a.otf",
+    "index.html": "/grandhyatt_react/index.html",
+    "main.51f1edb8.css.map": "/grandhyatt_react/static/css/main.51f1edb8.css.map",
+    "main.e263cd04.js.map": "/grandhyatt_react/static/js/main.e263cd04.js.map",
+    "787.cbfb9860.chunk.js.map": "/grandhyatt_react/static/js/787.cbfb9860.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51f1edb8.css",
+    "static/js/main.e263cd04.js"
+  ]
+}
