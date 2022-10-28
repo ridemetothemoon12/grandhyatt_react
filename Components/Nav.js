@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-// import { connect, useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 // import { useMediaQuery } from 'react-responsive';
 // import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components'
-import { connect } from 'react-redux';
-// import { ChangeLanguage } from '../store';
-
+import { ChangeLanguage } from '../store';
 
 const Header = styled.div`
   width: 100%;
@@ -110,52 +108,32 @@ const HeaderReserveLang = styled.div`
   cursor: pointer;
   user-select: none;
 `
-// const ChangeLanguage1 = useSelector((state) => state.languageData.data)
-//   console.log(ChangeLanguage1)
-// const dispatch = useDispatch();
 
+function Nav() {
+  const [IsMenuClick, setIsMenuClick] = useState(false);
+  const [IsLanguageClick, setIsLanguageClick] = useState(false);
 
-class HeaderConstructor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.clickHam = this.clickHam.bind(this);
-    this.state = {
-      active: false,
-      language: false
-      };
-  }
-  clickHam() {
-    const currentState = this.state.active;
-    this.setState({active: !currentState})
-    };
-  clickLang() {
-    const currentLanguage = this.state.language;
-    this.setState({language: !currentLanguage})
-    console.log('increase');
-  };
-
-
-
-
-
-  render() {
-    // const { language } = this.props;
-
-    return (
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ChangeLanguage(IsLanguageClick))
+  })
+  
+  return (
+    <>
       <Header>
         <HeaderWrap>
-          <HeaderHamMenustyle className={this.state.active ? 'on' : null} onClick={() => this.clickHam()}>
+          <HeaderHamMenustyle className={IsMenuClick ? 'on' : null} onClick={() => setIsMenuClick(!IsMenuClick)}>
             <HeaderLines></HeaderLines>
             <HeaderLines></HeaderLines>
             <HeaderLines></HeaderLines>
           </HeaderHamMenustyle>
-          <HeaderLogo><img src='../Image/logo.png' alt='logo'/></HeaderLogo>
+          <HeaderLogo><img src='./Image/logo.png' alt='logo'/></HeaderLogo>
           <HeaderReserveLang>
-            <p>{this.state.language ? "RESERVE" : "예약하기"}</p>
-            <p onClick={() => this.clickLang()}>{this.state.language ? "English" : "한국어"}</p>
+            <p>{IsLanguageClick === true ? "RESERVE" : "예약하기"}</p>
+            <p onClick={() => setIsLanguageClick(!IsLanguageClick)}>{IsLanguageClick === true ? "English" : "한국어"}</p>
           </HeaderReserveLang>
         </HeaderWrap>
-        <HeaderTopDownMenu className={this.state.active ? 'on' : null}>
+        <HeaderTopDownMenu className={IsMenuClick ? 'on' : null}>
           <HeaderTopDownMenuTextWrap>
             <ul>
               <li>Home</li>
@@ -167,26 +145,9 @@ class HeaderConstructor extends React.Component {
           </HeaderTopDownMenuTextWrap>
         </HeaderTopDownMenu>
       </Header>
-    )
-  }
-}
-
-function Nav() {
-  
-
-  return (
-    <>
-      <HeaderConstructor></HeaderConstructor>
     </>
   )
 }
 
 
-let mapStateToProps = (state) => {
-  return {
-      value: state.counter.value
-  };
-} 
-
-
-export default connect(mapStateToProps)(Nav);
+export default Nav;

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
+
+import SwiperCore, { Pagination, Autoplay } from "swiper/core";
 import { Navigation, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination, Autoplay } from "swiper/core";
 import "swiper/css";
 import "swiper/css/pagination";
-import styled from 'styled-components';
-import axios from 'axios';
-import { useMediaQuery } from 'react-responsive';
+
 import { useSelector } from 'react-redux';
+
 
 SwiperCore.use([Pagination, Autoplay]);
 
@@ -21,7 +24,7 @@ const TitleStyle = {
 const MainBackground = styled.div`
   width: 100%;
   height: 800px;
-  background: no-repeat url("../Image/pool.jpg");
+  background: no-repeat url("./Image/pool.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -96,7 +99,7 @@ const ContentOneWrap = styled.div`
 const ContentOneItemLobby = styled.div`
   grid-column: 1/2;
   grid-row: 1/3;
-  background: no-repeat url("../Image/inside.jpg");
+  background: no-repeat url("./Image/inside.jpg");
   background-size: cover;
   background-position: center;
 `
@@ -114,7 +117,7 @@ const ContentOneItemTextWrap = styled.div`
 const ContentOneItemOverview = styled.div`
   grid-column: 2/3;
   grid-row: 2/3;
-  background: no-repeat url("../Image/outlook.jpg");
+  background: no-repeat url("./Image/outlook.jpg");
   background-size: cover;
   background-position: center;
   @media (min-width: 641px) and (max-width: 1024px) {
@@ -259,7 +262,7 @@ const ContentThreeItemWrap = styled.div`
 const ContentThreeItem = styled.div`
   grid-column: ${(props) => props.colum || "1/3"};
   grid-row: ${(props) => props.row || "1/2"};
-  background: ${(props) => props.background || "url('../Image/room1.jpg')"};
+  background: ${(props) => props.background || "url('./Image/room1.jpg')"};
   background-size: cover;
   background-position: center;
   filter: drop-shadow(0px 0px 1px black);
@@ -268,7 +271,7 @@ const ContentThreeItem = styled.div`
     opacity: 0;
     font-family: Score3;
     text-align: center;
-    content: "더보기";
+    content: "VIEW MORE";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -409,31 +412,29 @@ function Main() {
   function setSliderIndexSetter(index) {
     setSliderIndex(index)
   }
-  
   const [onFineToggle, setonFineToggle] = useState(false);
   function fineClassSetter(){
     setonFineToggle(!onFineToggle)
   }
   
+  const languageChanger = useSelector((state) => state.languageChanger.data)
   const [contentCurtainList, setContentCurtainList] = useState([]);
   const [contentList, setContentList] = useState([]);
   const [fineDineList, setFineDineList] = useState([]);
+
   const fetchList = async() => {
-    const response = await axios.get(
-      'Nav.json'
-    );
-    setContentCurtainList(response.data.contentCurtain);
-    setContentList(response.data.contentItem);
-    setFineDineList(response.data.fineDine);
+    await axios
+      .all([ axios.get('Nav.json'), axios.get('EnNav.json') ])
+      .then( axios.spread((res1, res2) => {
+        setContentCurtainList( languageChanger === false ? res1.data.contentCurtain : res2.data.contentCurtain);
+        setContentList( languageChanger === false ? res1.data.contentItem : res2.data.contentItem);
+        setFineDineList( languageChanger === false ? res1.data.fineDine : res2.data.fineDine);
+      })
+    ); 
   }
-
-
-  // const PageLang = useSelector((state) => state.language);
-
-  // console.log(PageLang)
   useEffect(() => {
     fetchList();
-  }, []);
+  }, [languageChanger]);
 
   return (
     <>
@@ -453,11 +454,11 @@ function Main() {
         <ContentOneWrap>
           { IsDesktop && <ContentOneItemLobby></ContentOneItemLobby> }
           <ContentOneItemTextWrap>
-            { IsDesktop && <p style={{fontSize: "61px", fontWeight: "bold"}}>하얏트 제주만의</p> }
-            { IsDesktop && <p style={TitleStyle}>특별한 경험</p>}
-            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold"}}>이국적인 제주도를</p> }
-            { IsTablet && <p style={{width: "fit-content", fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>그랜드 하얏트 호텔과 함께</p>}
-            <p>제주도의 푸른 빛 바다, 수 많은 오름과 한라산의 아름다운 경관, 이국적인 야자수와 동양적인 동백꽃은 새로운 영감을 불어넣습니다 최고의 경험, 로맨틱한 휴일을 그랜드 하얏트에서 보내시길 권해드립니다.</p>
+            { IsDesktop && <p style={{fontSize: "61px", fontWeight: "bold"}}>{languageChanger ? "Jeju Hyatt" : "하얏트 제주만의"}</p> }
+            { IsDesktop && <p style={TitleStyle}>{languageChanger ? "Iconic experience" : "특별한 경험"}</p>}
+            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold"}}>{languageChanger ? "Iconic experience" : "이국적인 제주도를"}</p> }
+            { IsTablet && <p style={{width: "fit-content", fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>{languageChanger ? "with Jeju Grand Hyatt" : "그랜드 하얏트 호텔과 함께"}</p>}
+            <p>{ languageChanger ? "Formed by volcanic eruptions two million years ago and known as the Hawaii of South Korea, Jeju Island is popular among the local Koreans as a convenient holiday destination. The island has something for everyone during all four seasons. Its natural environment is pristine with heritage sites recognized by UNESCO." : "제주도의 푸른 빛 바다, 수 많은 오름과 한라산의 아름다운 경관, 이국적인 야자수와 동양적인 동백꽃은 새로운 영감을 불어넣습니다 최고의 경험, 로맨틱한 휴일을 그랜드 하얏트에서 보내시길 권해드립니다."}</p>
           </ContentOneItemTextWrap>
           <ContentOneItemOverview></ContentOneItemOverview>
         </ContentOneWrap>
@@ -467,11 +468,11 @@ function Main() {
         <ContentTwoWrap>
           <ContentTwoTextWrap>
             <ContentTwoTitleWrap>
-              { IsDesktop && <p style={{fontSize: "61px", fontWeight: "bold"}}>하얏트 제주</p> }
-              { IsDesktop && <p style={TitleStyle}>편의 시설</p>}
-              { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>하얏트 제주 편의 시설</p> }
+              { IsDesktop && <p style={{fontSize: "61px", fontWeight: "bold"}}>{languageChanger ? "Jeju Hyatt" : "하얏트 제주"}</p> }
+              { IsDesktop && <p style={TitleStyle}>{languageChanger ? "Activities" : "편의 시설"}</p>}
+              { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>{languageChanger ? "Hyatt Jeju Resort Activities" : "하얏트 제주 편의 시설"}</p> }
             </ContentTwoTitleWrap>
-              <p style={{marginBottom: "15px", width: "60%"}}>제주 하얏트 호텔이 제공하는 세계적인 프리미엄 편의 시설과 함께 특별한 휴가를 보내실 수 있도록 최선을 다하고 있습니다.</p>
+              <p style={{marginBottom: "15px", width: "60%"}}>{languageChanger ? "With world class premium resort activity facilities Hyatt jeju provides,we put best effort to serve you to have a wonderful holidays." : "제주 하얏트 호텔이 제공하는 세계적인 프리미엄 편의 시설과 함께 특별한 휴가를 보내실 수 있도록 최선을 다하고 있습니다."}</p>
           </ContentTwoTextWrap>
           <ContentTwoCurtainWrap>
           {
@@ -493,9 +494,9 @@ function Main() {
       <ContentThree>
         <ContentThreeWrap>
           <ContentThreeTextWrap>
-            { IsDesktop && <p style={TitleStyle}>객실 안내</p> }
-            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>객실 안내</p> }
-            <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>제주의 아름다운 경관을 하얏트만의 특별한 감성과 함께.</p>
+            { IsDesktop && <p style={TitleStyle}>{languageChanger ? "Rooms" : "객실 안내"}</p> }
+            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>{languageChanger ? "Rooms" : "객실 안내"}</p> }
+            <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>{languageChanger ? "Jeju's Pristine scene with Hyatt's unique pathos" : "제주의 아름다운 경관을 하얏트만의 특별한 감성과 함께."}</p>
           </ContentThreeTextWrap>
           <ContentThreeItemWrap>
             <ContentThreeItem></ContentThreeItem>
@@ -509,9 +510,9 @@ function Main() {
       <ContentFour>
         <ContentFourWrap>
           <ContentFourTextWrap>
-            { IsDesktop && <p style={TitleStyle}>파인 다이닝</p> }
-            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>파인 다이닝</p> }
-            <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>그랜드 하얏트에서 제공하는 특별한 만찬</p>
+            { IsDesktop && <p style={TitleStyle}>{languageChanger ? "Fine Dining" : "파인 다이닝"}</p> }
+            { IsTablet && <p style={{fontSize: "32px", fontWeight: "bold", borderBottom: "2px solid #BD213E", marginBottom: "10px"}}>{languageChanger ? "Fine Dining" : "파인 다이닝"}</p> }
+            <p style={{marginLeft: "30px", marginBottom: "10px", width: "60%"}}>{ languageChanger ? "Indulge in a plethora of international cuisines, featuring local and international favorites." : "그랜드 하얏트에서 제공하는 특별한 만찬"}</p>
           </ContentFourTextWrap>
           <ContentSwiperWrap>
             <ContentSwiperSlide>
@@ -543,12 +544,12 @@ function Main() {
                   return <ContentSwiperTextWrapItem className={(sliderIndex === index) ? "active" : null} key={e.id}>
                     <h1>{e.title}</h1>
                     <p>{e.titleDesc}</p>
-                    <h2>운영 시간</h2>
-                    <h3>조식</h3>
+                    <h2>{languageChanger ? "Hours" : "운영 시간"}</h2>
+                    <h3>{languageChanger ? "Breakfast" : "조식"}</h3>
                     <p style={{textAlign: "center"}}>{e.breakf}</p>
-                    <h3>런치</h3>
+                    <h3>{languageChanger ? "Lunch" : "런치"}</h3>
                     <p style={{textAlign: "center"}}>{e.lunch}</p>
-                    <h3>디너</h3>
+                    <h3>{languageChanger ? "Dinner" : "디너"}</h3>
                     <p style={{textAlign: "center"}}>{e.dinner}</p>
                     <h3>{e.loc}</h3>
                     </ContentSwiperTextWrapItem>
