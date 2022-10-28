@@ -1,4 +1,7 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
 const FooterFooter = styled.div`
@@ -30,21 +33,43 @@ const FooterInfos = styled.div`
     align-items: center;
 `
 const FooterInfosItem = styled.ul`
-    width: 40%;
+    width: 80%;
     height: 70%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
+    flex-wrap: wrap;
     font-size: 12px;
+    li {
+        padding: 5px 0;
+    }
 `
 const FooterInfosSmall = styled.div`
-    width: 70%;
+    width: 75%;
     height: 50px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 `
 function Footer() {
+    const IsDesktop = useMediaQuery({ query: "(min-width: 1025px"})
+    const languageChanger = useSelector((state) => state.languageChanger.data)
+
+    const [footerInfosTop, setFooterInfosTop] = useState([]);
+    const [footerInfosBottom, setFooterInfosBottom] = useState([]);
+
+    const fetchList = async() => {
+        await axios
+        .all([ axios.get('Nav.json'), axios.get('EnNav.json')])
+        .then( axios.spread((res1, res2) => {
+            setFooterInfosTop( languageChanger === false ? res1.data.footerTop : res2.data.footerTop)
+            setFooterInfosBottom( languageChanger === false ? res1.data.footerBottom : res2.data.footerBottom)
+            })
+        )
+    }
+    useEffect(() => {
+        fetchList();
+    }, [languageChanger]);
     return (
         <>
             <FooterFooter>
@@ -54,30 +79,25 @@ function Footer() {
                 <FooterWrap>
                     <FooterInfos>
                         <FooterInfosItem>
-                            <li>그랜드 하얏트 제주</li>
-                            <li>제주시 노연로 12. 제주. 대한민국. 63082</li>
-                            <li>전화: +82 64 907 1234 | 팩스: +82 64 907 1235 | jeju.grand@hyatt.com</li>
-                            <li>영상정보처리기기 운영관리방침</li>
-                        </FooterInfosItem>
-                        <FooterInfosItem>
-                            <li>사업자등록번호: 101-81-10173</li>
-                            <li>통신판매업신고: 제 2020-제주노형-0197 호</li>
-                            <li>대표자: 김기병, 백현, 김한준</li>
+                            {
+                                footerInfosTop.map((e) => {
+                                    return <li key={e.id}>{e.content}</li>
+                                })
+                            }
                         </FooterInfosItem>
                     </FooterInfos>
                 </FooterWrap>
-                <FooterInfosSmall>
+                { IsDesktop && <FooterInfosSmall>
                     <FooterInfosItem style={{width: "80%", height: "50px", flexDirection: "row", fontSize: "12px", justifyContent: "space-evenly"}}>
-                        <li>개인정보 보호정책</li>
-                        <li>이용 약관</li>
-                        <li>쿠키 센터</li>
-                        <li>보안 및 안전</li>
-                        <li>현대판 노예제 및 인신매매</li>
-                        <li>본인의 개인정보를 판매하지 마십시오</li>
+                        {
+                            footerInfosBottom.map((e) => {
+                                return <li key={e.id}>{e.content}</li>
+                            })
+                        }
                         <li>2022 Hyatt Corporation</li>
                     </FooterInfosItem>
                     <FooterLogo src='../Image/Grand_Hyatt_logo.svg.png' alt='ftlogo' style={{width: "270px", height: "50px", transform: "translateY(-60%)"}}></FooterLogo>
-                </FooterInfosSmall>
+                </FooterInfosSmall>}
             </FooterFooter>
         </>
     )
