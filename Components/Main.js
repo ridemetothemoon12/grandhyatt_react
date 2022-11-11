@@ -414,6 +414,7 @@ function Main() {
   }
   const [onFineToggle, setonFineToggle] = useState(false);
   function fineClassSetter(){
+    console.log("clicked")
     setonFineToggle(!onFineToggle)
   }
   
